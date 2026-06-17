@@ -1,0 +1,1056 @@
+/* styles.css - AI Career Navigator Styling System */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Design System Variables */
+:root {
+  --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  /* Colors */
+  --primary-yellow: #FFB900;
+  --primary-yellow-hover: #E5A600;
+  --primary-yellow-light: #FFF9E6;
+  --dark-slate: #0F172A;
+  --dark-slate-light: #1E293B;
+  --gray-text: #475467;
+  --gray-light: #F2F4F7;
+  --gray-bg: #F8F9FA;
+  --border-color: #F2F4F7;
+
+  /* Card Curl Colors */
+  --blue-curl: #2563EB;
+  --yellow-curl: #FFB900;
+  --purple-curl: #7C3AED;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 12px 24px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 24px 48px -12px rgba(16, 24, 40, 0.12);
+  --shadow-card: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.01);
+  --shadow-curl: -3px 3px 6px rgba(0, 0, 0, 0.1), -10px 10px 15px rgba(0, 0, 0, 0.05);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-secondary);
+  color: var(--dark-slate-light);
+  background-color: #FFFFFF;
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Base Layout Classes */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* -----------------------------------------
+   Top Yellow Banner
+   ----------------------------------------- */
+.top-banner {
+  background-color: var(--primary-yellow);
+  color: var(--dark-slate);
+  padding: 10px 20px;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-banner a {
+  color: var(--dark-slate);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+}
+
+.top-banner a:hover {
+  opacity: 0.8;
+}
+
+/* -----------------------------------------
+   Header & Navbar
+   ----------------------------------------- */
+header {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--dark-slate);
+}
+
+.logo-icon {
+  background-color: var(--primary-yellow);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 185, 0, 0.3);
+}
+
+.logo-text-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: var(--font-primary);
+  font-size: 1.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.logo-title span {
+  color: var(--primary-yellow);
+}
+
+.logo-subtitle {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--gray-text);
+  letter-spacing: 0.2px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-slate-light);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--dark-slate);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--primary-yellow);
+  border-radius: 2px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn {
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-login {
+  color: var(--dark-slate);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-login:hover {
+  background-color: var(--gray-light);
+  transform: translateY(-2px);
+}
+
+.btn-signup {
+  color: var(--dark-slate);
+  background-color: var(--primary-yellow);
+  border: 1px solid var(--primary-yellow);
+  box-shadow: 0 4px 14px rgba(255, 185, 0, 0.25);
+}
+
+.btn-signup:hover {
+  background-color: var(--primary-yellow-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 185, 0, 0.35);
+}
+
+/* -----------------------------------------
+   Hero Section
+   ----------------------------------------- */
+.hero {
+  position: relative;
+  padding: 80px 0 120px 0;
+  overflow: visible;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Wave Background (Top Left) */
+.wave-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+/* Left Column: Hero Content */
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--dark-slate);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.hero-title span.highlight-container {
+  position: relative;
+  display: inline-block;
+  color: var(--primary-yellow);
+}
+
+/* Handwritten Underline Accent */
+.hero-title span.highlight-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='260' height='10' viewBox='0 0 260 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8C50.5 3 130.5 1.5 258 5' stroke='%23FFB900' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.hero-ctas .btn {
+  font-size: 1.05rem;
+  padding: 16px 32px;
+  border-radius: 12px;
+}
+
+.hero-ctas .btn-signup svg {
+  transition: transform 0.3s ease;
+}
+
+.hero-ctas .btn-signup:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  color: var(--dark-slate);
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+  background-color: var(--gray-light);
+  transform: translateY(-2px);
+}
+
+/* Social Proof Grid */
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-group {
+  display: flex;
+}
+
+.avatar-group img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #FFFFFF;
+  margin-right: -10px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.badge-10k {
+  background-color: var(--primary-yellow);
+  color: var(--dark-slate);
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  font-feature-settings: "tnum";
+}
+
+.social-text {
+  font-size: 0.95rem;
+  color: var(--gray-text);
+  line-height: 1.4;
+  max-width: 240px;
+}
+
+/* -----------------------------------------
+   Right Column: Mockup Cards Showcase Area
+   ----------------------------------------- */
+.mockup-container {
+  position: relative;
+  height: 580px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Organic Background Shadow & Blob */
+.mockup-bg-blob {
+  position: absolute;
+  width: 520px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(255, 249, 230, 0.8) 0%, rgba(255, 253, 245, 0.3) 70%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 1;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+/* Dot Grid Background Overlay */
+.mockup-dot-grid {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  width: 96px;
+  height: 96px;
+  background-image: radial-gradient(#E4E7EC 2px, transparent 2px);
+  background-size: 16px 16px;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* Card Wrapper with Stack Perspective */
+.card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3D Curled Card Core styles */
+.navigator-card {
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: var(--transition-bounce);
+  overflow: visible;
+  padding: 24px;
+}
+
+/* The Page Curl Slicing & Fold Effects */
+.navigator-card.curled {
+  /* Slice top right corner: 100% - 40px on X, and Y starts 40px down on right side */
+  clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%);
+}
+
+.navigator-card::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--curl-bg-color, var(--blue-curl));
+  border-bottom-left-radius: 12px;
+  box-shadow: var(--shadow-curl);
+  transform-origin: top right;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Card 1: Personalized Roadmap (Left Stack) */
+.card-roadmap {
+  width: 250px;
+  height: 390px;
+  left: 20px;
+  z-index: 10;
+  transform: rotate(-5deg) translateY(20px);
+  --curl-bg-color: var(--blue-curl);
+}
+
+.card-roadmap:hover {
+  transform: rotate(-2deg) translateY(5px) scale(1.02);
+  z-index: 40;
+}
+
+/* Card 2: Resume (Center/Top Stack) */
+.card-resume {
+  width: 290px;
+  height: 450px;
+  z-index: 30;
+  transform: translateY(-10px);
+  --curl-bg-color: var(--yellow-curl);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.01);
+}
+
+.card-resume:hover {
+  transform: translateY(-20px) scale(1.03);
+  z-index: 40;
+}
+
+/* Card 3: AI Mock Interview (Right Stack) */
+.card-interview {
+  width: 260px;
+  height: 410px;
+  right: 15px;
+  z-index: 20;
+  transform: rotate(5deg) translateY(35px);
+  --curl-bg-color: var(--purple-curl);
+}
+
+.card-interview:hover {
+  transform: rotate(2deg) translateY(15px) scale(1.02);
+  z-index: 40;
+}
+
+/* -----------------------------------------
+   Card Internal Details & Elements
+   ----------------------------------------- */
+
+/* Card Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-title-lg {
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+  line-height: 1.2;
+}
+
+.card-subtitle-sm {
+  font-size: 0.72rem;
+  color: var(--gray-text);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.card-icon-round {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 1. Roadmap Card Inside Details */
+.card-roadmap .card-icon-round {
+  background-color: #EFF6FF;
+  color: var(--blue-curl);
+}
+
+.timeline-flow {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* Vertical line */
+.timeline-flow::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(to bottom, #D1FAE5 0%, #3B82F6 20%, #3B82F6 80%, #10B981 100%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background-color: var(--gray-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--timeline-dot, #3B82F6);
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 0 0 2px var(--timeline-dot, #3B82F6);
+}
+
+.timeline-title {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+}
+
+.timeline-desc {
+  font-size: 0.65rem;
+  color: var(--gray-text);
+  margin-top: 1px;
+}
+
+/* 2. Resume Card Inside Details */
+.card-resume .resume-label {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark-slate);
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.resume-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.resume-user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FEF3C7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-yellow);
+}
+
+.resume-user-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.line-placeholder {
+  height: 6px;
+  background-color: #EAECF0;
+  border-radius: 3px;
+}
+
+.line-placeholder.w-full { width: 100%; }
+.line-placeholder.w-2-3 { width: 66%; }
+.line-placeholder.w-1-2 { width: 50%; }
+.line-placeholder.w-1-3 { width: 33%; }
+
+.resume-section {
+  margin-bottom: 20px;
+}
+
+.resume-section-title {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-dot-lead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #D0D5DD;
+  border-radius: 50%;
+}
+
+.rating-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.rating-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #EAECF0;
+}
+
+.rating-dot.filled {
+  background-color: var(--primary-yellow);
+}
+
+.experience-list,
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 3. Mock Interview Card Details */
+.card-interview .card-icon-round {
+  background-color: #F5F3FF;
+  color: var(--purple-curl);
+}
+
+.chat-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.chat-bubble {
+  padding: 10px 14px;
+  font-size: 0.72rem;
+  max-width: 85%;
+  line-height: 1.4;
+}
+
+.chat-bubble-bot {
+  background-color: #F2F4F7;
+  color: var(--dark-slate);
+  border-radius: 4px 14px 14px 14px;
+  align-self: flex-start;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bot-avatar-mini {
+  width: 16px;
+  height: 16px;
+  background-color: #101828;
+  color: #FFFFFF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-bubble-user {
+  background-color: #3538CD; /* Deep blueish purple as in the image */
+  color: #FFFFFF;
+  border-radius: 14px 14px 4px 14px;
+  align-self: flex-end;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(53, 56, 205, 0.15);
+}
+
+/* Audio Sound Wave Visualization */
+.sound-wave {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 24px;
+  margin: 4px 0;
+}
+
+.wave-bar {
+  width: 3px;
+  height: 8px;
+  background-color: var(--primary-yellow);
+  border-radius: 2px;
+  animation: audioPulse 1.2s ease-in-out infinite alternate;
+}
+
+.wave-bar:nth-child(2n) {
+  height: 16px;
+  animation-delay: 0.1s;
+}
+
+.wave-bar:nth-child(3n) {
+  height: 22px;
+  animation-delay: 0.2s;
+}
+
+.wave-bar:nth-child(4n) {
+  height: 12px;
+  animation-delay: 0.3s;
+}
+
+.wave-bar:nth-child(5n) {
+  height: 18px;
+  animation-delay: 0.4s;
+}
+
+.wave-bar:nth-child(6n) {
+  height: 10px;
+  animation-delay: 0.15s;
+}
+
+.wave-bar:nth-child(7n) {
+  height: 24px;
+  animation-delay: 0.25s;
+}
+
+/* Interview Score Pie Chart */
+.score-circle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 14px;
+}
+
+.score-pie {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: conic-gradient(#3B82F6 0% 85%, #E4E7EC 85% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-pie::before {
+  content: '';
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+}
+
+.score-text {
+  position: relative;
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+  z-index: 2;
+}
+
+.score-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-lbl {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--dark-slate);
+}
+
+.score-sub {
+  font-size: 0.62rem;
+  color: var(--gray-text);
+}
+
+/* -----------------------------------------
+   Floating Speech Bubbles & Avatars
+   ----------------------------------------- */
+.floating-avatar-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 35;
+}
+
+.floating-avatar-container.top-right {
+  top: 10px;
+  right: 15px;
+}
+
+.floating-avatar-container.bottom-right {
+  bottom: 0px;
+  right: 80px;
+}
+
+.floater-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+  box-shadow: var(--shadow-md);
+}
+
+.floater-bubble {
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  min-width: 60px;
+}
+
+.floating-avatar-container.top-right .floater-bubble {
+  background-color: var(--primary-yellow);
+  color: var(--dark-slate);
+  border-bottom-right-radius: 2px;
+}
+
+/* Floating yellow bubble waves decorative dots on top right */
+.floating-avatar-container.top-right::after {
+  content: '';
+  position: absolute;
+  top: -24px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  background-image: radial-gradient(#EAECF0 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+  opacity: 0.5;
+}
+
+.floating-avatar-container.bottom-right .floater-bubble {
+  background-color: #3B82F6;
+  color: #FFFFFF;
+  border-top-left-radius: 2px;
+}
+
+/* Floating action expand button (bottom right) */
+.btn-expand-fixed {
+  position: absolute;
+  bottom: 24px;
+  right: -24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark-slate);
+  cursor: pointer;
+  z-index: 40;
+  transition: var(--transition-bounce);
+}
+
+.btn-expand-fixed:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* -----------------------------------------
+   Animations
+   ----------------------------------------- */
+@keyframes audioPulse {
+  0% { transform: scaleY(0.7); }
+  100% { transform: scaleY(1.3); }
+}
+
+/* Floating animation for decorative bubbles */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-avatar-container.top-right {
+  animation: float 5s ease-in-out infinite;
+}
+
+.floating-avatar-container.bottom-right {
+  animation: float 6s ease-in-out infinite 0.5s;
+}
+
+/* -----------------------------------------
+   Responsive Layout Styles
+   ----------------------------------------- */
+@media (max-width: 1100px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin: 0 auto 40px auto;
+  }
+
+  .hero-ctas {
+    justify-content: center;
+  }
+
+  .social-proof {
+    justify-content: center;
+  }
+
+  .wave-bg {
+    width: 60%;
+  }
+
+  .mockup-container {
+    height: 520px;
+    margin-top: 20px;
+  }
+
+  .card-stack {
+    max-width: 640px;
+  }
+
+  .card-roadmap { left: 10px; }
+  .card-interview { right: 10px; }
+  .floating-avatar-container.bottom-right { right: 60px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* In production, you would toggle a hamburger menu */
+  }
+
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .mockup-container {
+    zoom: 0.9;
+    height: 480px;
+  }
+}
+
+@media (max-width: 580px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .mockup-container {
+    zoom: 0.75;
+    height: 440px;
+  }
+  
+  .btn-expand-fixed {
+    right: 0;
+  }
+}

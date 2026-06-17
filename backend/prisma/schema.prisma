@@ -1,0 +1,113 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(cuid())
+  name           String
+  email          String          @unique
+  password       String
+  role           String          @default("user")
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  targetRole     String          @default("Software Development Engineer")
+  jobMatches     JobMatch[]
+  jobTargets     JobTarget[]
+  mockInterviews MockInterview[]
+  resumes        Resume[]
+  roadmaps       Roadmap[]
+  skillGaps      SkillGap[]
+}
+
+model Resume {
+  id            String              @id @default(cuid())
+  fileUrl       String
+  extractedText String?
+  userId        String
+  createdAt     DateTime            @default(now())
+  user          User                @relation(fields: [userId], references: [id])
+  analysis      ResumeAnalysis?
+  improvements  ResumeImprovement[]
+}
+
+model ResumeAnalysis {
+  id              String   @id @default(cuid())
+  score           Int
+  strengths       String[]
+  weaknesses      String[]
+  resumeId        String   @unique
+  createdAt       DateTime @default(now())
+  atsImprovements String[] @default([])
+  missingKeywords String[] @default([])
+  matchPercentage Int      @default(0)
+  recommendations String[] @default([])
+  resume          Resume   @relation(fields: [resumeId], references: [id])
+}
+
+model SkillGap {
+  id               String   @id @default(cuid())
+  targetRole       String
+  currentSkills    String[]
+  missingSkills    String[]
+  userId           String
+  createdAt        DateTime @default(now())
+  learningPriority String   @default("Medium")
+  weakSkills       String[] @default([])
+  user             User     @relation(fields: [userId], references: [id])
+}
+
+model Roadmap {
+  id        String   @id @default(cuid())
+  title     String
+  steps     Json
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ResumeImprovement {
+  id          String   @id @default(cuid())
+  resumeId    String
+  suggestions Json
+  createdAt   DateTime @default(now())
+  resume      Resume   @relation(fields: [resumeId], references: [id])
+}
+
+model JobMatch {
+  id         String   @id @default(cuid())
+  jobTitle   String
+  company    String
+  matchScore Int
+  userId     String
+  createdAt  DateTime @default(now())
+  location   String?
+  salary     String?
+  skills     String[] @default([])
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model MockInterview {
+  id        String   @id @default(cuid())
+  questions Json
+  answers   Json
+  score     Int?
+  userId    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model JobTarget {
+  id                String   @id @default(cuid())
+  userId            String
+  companyName       String
+  roleTitle         String
+  jobDescription    String
+  createdAt         DateTime @default(now())
+  jobReadinessScore Int      @default(0)
+  user              User     @relation(fields: [userId], references: [id])
+}
